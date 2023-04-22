@@ -1,5 +1,3 @@
-print("hello world")
-
 # Preconditions: Expression must be between two numbers only
 def addition(str):
     print("number was added")
