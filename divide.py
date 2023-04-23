@@ -1,5 +1,5 @@
 # Preconditions: Expression must be between two numbers only
-def multiplication(str):
+def divide(str):
     print("number was multiplied")
     expression = str.split(" ")
     print(expression)
@@ -31,11 +31,9 @@ def multiplication(str):
     return num1 / num2
 
 def testcases():
-    assert multiplication("0 / 0") == "ERROR"
-    assert multiplication("1 / 2") == 0.5
-    assert multiplication("2 / - 2") == -1.0
-    assert multiplication("0 / - 2") == 0.0
-    assert multiplication("- 2 * - 2") == 1.0
+    assert divide("0 / 0") == "ERROR"
+    assert divide("1 / 2") == 0.5
+    assert divide("2 / - 2") == -1.0
+    assert divide("0 / - 2") == 0.0
+    assert divide("- 2 * - 2") == 1.0
     print("all test cases passed")
-
-testcases()

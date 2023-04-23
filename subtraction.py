@@ -22,5 +22,3 @@ def testcases():
     assert subtraction("- 2 - 2") == -4.0
     assert subtraction("0 - 2") == -2.0
     print("all test cases passed")
-
-testcases()
