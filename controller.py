@@ -63,10 +63,10 @@ def equalpress():
                 result = square(result, getNumber(input_string))
                 input_string = input_string[len(str(getNumber(input_string)))::]
                 print(input_string)
-
         equation.set(str(result))
     except:
         equation.set("ERROR")
+
  
 def clear():
     global expression
@@ -137,9 +137,9 @@ if __name__ == "__main__":
                     command=lambda: press("*"), height=1, width=7)
     multiply.grid(row=4, column=3)
  
-    divide = Button(gui, text=' / ', fg='black', bg='red',
+    divideButton = Button(gui, text=' / ', fg='black', bg='red',
                     command=lambda: press("/"), height=1, width=7)
-    divide.grid(row=5, column=3)
+    divideButton.grid(row=5, column=3)
  
     equal = Button(gui, text=' = ', fg='black', bg='red',
                 command=equalpress, height=1, width=7)
