@@ -36,35 +36,37 @@ def equalpress():
     result = getNumber(input_string)
     input_string = input_string[len(str(result))::]
     print(input_string)
+    try:
+        while input_string != '':
+            if input_string[0] == '+':
+                input_string = input_string[1::]
+                result = addition(result, getNumber(input_string))
+                input_string = input_string[len(str(getNumber(input_string)))::]
+                print(input_string)
+            elif input_string[0] == '-':
+                input_string = input_string[1::]
+                result = subtraction(result, getNumber(input_string))
+                input_string = input_string[len(str(getNumber(input_string)))::]
+                print(input_string)
+            elif input_string[0] == '*':
+                input_string = input_string[1::]
+                result = multiplication(result, getNumber(input_string))
+                input_string = input_string[len(str(getNumber(input_string)))::]
+                print(input_string)
+            elif input_string[0] == '/':
+                input_string = input_string[1::]
+                result = divide(result, getNumber(input_string))
+                input_string = input_string[len(str(getNumber(input_string)))::]
+                print(input_string)
+            elif input_string[0] == '^':
+                input_string = input_string[1::]
+                result = square(result, getNumber(input_string))
+                input_string = input_string[len(str(getNumber(input_string)))::]
+                print(input_string)
 
-    while input_string != '':
-        if input_string[0] == '+':
-            input_string = input_string[1::]
-            result = addition(result, getNumber(input_string))
-            input_string = input_string[len(str(getNumber(input_string)))::]
-            print(input_string)
-        elif input_string[0] == '-':
-            input_string = input_string[1::]
-            result = subtraction(result, getNumber(input_string))
-            input_string = input_string[len(str(getNumber(input_string)))::]
-            print(input_string)
-        elif input_string[0] == '*':
-            input_string = input_string[1::]
-            result = multiplication(result, getNumber(input_string))
-            input_string = input_string[len(str(getNumber(input_string)))::]
-            print(input_string)
-        elif input_string[0] == '/':
-            input_string = input_string[1::]
-            result = divide(result, getNumber(input_string))
-            input_string = input_string[len(str(getNumber(input_string)))::]
-            print(input_string)
-        elif input_string[0] == '^':
-            input_string = input_string[1::]
-            result = square(result, getNumber(input_string))
-            input_string = input_string[len(str(getNumber(input_string)))::]
-            print(input_string)
-
-    equation.set(str(result))
+        equation.set(str(result))
+    except:
+        equation.set("ERROR")
  
 def clear():
     global expression
