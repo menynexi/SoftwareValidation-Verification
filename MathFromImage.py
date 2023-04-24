@@ -35,4 +35,3 @@ def solve_from_picture():
     result = eval(text)
     print(result)
     return result
-    
