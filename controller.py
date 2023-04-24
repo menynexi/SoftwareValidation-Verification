@@ -2,6 +2,7 @@ from addition import addition
 from subtraction import subtraction
 from multiplication import multiplication
 from divide import divide
+from square import square
 from tkinter import *
 
 
@@ -15,18 +16,40 @@ def press(num):
     equation.set(expression)
 
 def equalpress():
-    try:
-        global expression
+    global expression
 
-        #need to change so it uses the specific methods
-        total = str(eval(expression))
+    #need to change so it uses the specific methods
+    #implement this logic fuckkkkk
 
-        equation.set(total)
-        expression = ""
+    input_string = expression
+    result = 0
+    counter = -1
+    for ch in range(len(input_string)):
+        if counter == ch:
+            continue
+        if input_string[ch] in ['-', '+', '/', '*', '^']:
+            next_value = int(input_string[ch+1])
+            if input_string[ch] == '-':
+                result = subtraction(result, next_value)
+                counter = ch+1
+            elif input_string[ch] == '+':
+                result = addition(result, next_value)
+                counter = ch+1
+            elif input_string[ch] == '*':
+                result = multiplication(result,next_value)
+                counter = ch+1
+            elif input_string[ch] == '/':
+                result = divide(result,next_value)
+                counter = ch+1
+            elif input_string[ch] == '^':
+                result = square(result,next_value)
+                counter = ch+1
+        else:
+            result = int(input_string[ch])
 
-    except:
-        equation.set(" error ")
-        expression = ""
+    print(result)
+    equation.set(str(result))
+    expression = ""
  
 def clear():
     global expression
@@ -112,6 +135,10 @@ if __name__ == "__main__":
     Decimal= Button(gui, text='.', fg='black', bg='red',
                     command=lambda: press('.'), height=1, width=7)
     Decimal.grid(row=6, column=0)
+
+    Squared = Button(gui, text=' ^ ', fg='black', bg='red',
+                    command=lambda: press('^'), height=1, width=7)
+    Squared.grid(row=6, column=3)
 
     # start the GUI
     gui.mainloop()
