@@ -17,13 +17,19 @@ def press(num):
 
 def getNumber(input_string):
   expression = input_string
-  pattern = r"(\d+)"
+  pattern = r"([-+]?\d*\.\d+|\d+)"
   match = re.match(pattern, expression)
 
   if match:
-      first_number = int(match.group())
-      print("First number:", first_number)
-      return first_number
+      print(match.group())
+      if '.' in match.group():
+        first_number = float(match.group())
+        print("First number:", first_number)
+        return first_number
+      else:
+        first_number = int(match.group())
+        print("First number:", first_number)
+        return first_number
   else:
       print("No number found")
       return 0
