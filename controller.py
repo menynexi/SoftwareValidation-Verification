@@ -4,7 +4,7 @@ from multiplication import multiplication
 from divide import divide
 from square import square
 from tkinter import *
-
+import re
 
 expression = ""
 
@@ -15,41 +15,56 @@ def press(num):
     print("new expression", expression)
     equation.set(expression)
 
+def getNumber(input_string):
+  expression = input_string
+  pattern = r"(\d+)"
+  match = re.match(pattern, expression)
+
+  if match:
+      first_number = int(match.group())
+      print("First number:", first_number)
+      return first_number
+  else:
+      print("No number found")
+      return 0
+
 def equalpress():
     global expression
 
-    #need to change so it uses the specific methods
-    #implement this logic fuckkkkk
-
+    #gets the first number
     input_string = expression
-    result = 0
-    counter = -1
-    for ch in range(len(input_string)):
-        if counter == ch:
-            continue
-        if input_string[ch] in ['-', '+', '/', '*', '^']:
-            next_value = int(input_string[ch+1])
-            if input_string[ch] == '-':
-                result = subtraction(result, next_value)
-                counter = ch+1
-            elif input_string[ch] == '+':
-                result = addition(result, next_value)
-                counter = ch+1
-            elif input_string[ch] == '*':
-                result = multiplication(result,next_value)
-                counter = ch+1
-            elif input_string[ch] == '/':
-                result = divide(result,next_value)
-                counter = ch+1
-            elif input_string[ch] == '^':
-                result = square(result,next_value)
-                counter = ch+1
-        else:
-            result = int(input_string[ch])
+    result = getNumber(input_string)
+    input_string = input_string[len(str(result))::]
+    print(input_string)
 
-    print(result)
+    while input_string != '':
+        if input_string[0] == '+':
+            input_string = input_string[1::]
+            result = addition(result, getNumber(input_string))
+            input_string = input_string[len(str(getNumber(input_string)))::]
+            print(input_string)
+        elif input_string[0] == '-':
+            input_string = input_string[1::]
+            result = subtraction(result, getNumber(input_string))
+            input_string = input_string[len(str(getNumber(input_string)))::]
+            print(input_string)
+        elif input_string[0] == '*':
+            input_string = input_string[1::]
+            result = multiplication(result, getNumber(input_string))
+            input_string = input_string[len(str(getNumber(input_string)))::]
+            print(input_string)
+        elif input_string[0] == '/':
+            input_string = input_string[1::]
+            result = divide(result, getNumber(input_string))
+            input_string = input_string[len(str(getNumber(input_string)))::]
+            print(input_string)
+        elif input_string[0] == '^':
+            input_string = input_string[1::]
+            result = square(result, getNumber(input_string))
+            input_string = input_string[len(str(getNumber(input_string)))::]
+            print(input_string)
+
     equation.set(str(result))
-    expression = ""
  
 def clear():
     global expression
