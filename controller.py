@@ -3,6 +3,7 @@ from subtraction import subtraction
 from multiplication import multiplication
 from divide import divide
 from square import square
+from MathFromImage import solve_from_picture
 from tkinter import *
 import re
 
@@ -78,6 +79,13 @@ def clear():
     global expression
     expression = ""
     equation.set("")
+    
+def math_pic():
+    try:
+        equation.set(solve_from_picture())
+    except:
+        equation.set("get better picture")
+    
  
 
 if __name__ == "__main__":
@@ -162,6 +170,10 @@ if __name__ == "__main__":
     Squared = Button(gui, text=' ^ ', fg='black', bg='red',
                     command=lambda: press('^'), height=1, width=7)
     Squared.grid(row=6, column=3)
+    
+    Squared = Button(gui, text=' PIC', fg='black', bg='red',
+                    command=math_pic, height=1, width=7)
+    Squared.grid(row=6, column=2)
 
     # start the GUI
     gui.mainloop()
