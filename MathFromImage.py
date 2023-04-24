@@ -6,8 +6,6 @@ import shutil
 
 
 def pic_image():
-
-    
     # Get the current working directory
     current_dir = os.getcwd()
     
@@ -27,7 +25,6 @@ def solve_from_picture():
     results = reader.readtext(path,allowlist='0123456789 %/*-+')
     
     # print(results)
-    
     text = ''
     for result in results:
         text+= result[1] + ''

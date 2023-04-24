@@ -37,9 +37,13 @@ def getNumber(input_string):
 
 def equalpress():
     global expression
-
     #gets the first number
     input_string = expression
+    
+    if input_string[0] == '-':
+        equation.set("ERROR")
+        return 0
+    
     result = getNumber(input_string)
     input_string = input_string[len(str(result))::]
     print(input_string)
@@ -79,7 +83,8 @@ def clear():
     global expression
     expression = ""
     equation.set("")
-    
+
+
 def math_pic():
     try:
         equation.set(solve_from_picture())
