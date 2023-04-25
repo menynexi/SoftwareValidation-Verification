@@ -8,6 +8,9 @@ def testcases():
     assert multiplication(2,-2) == -4.0
     assert multiplication(0,-2) == 0.0
     assert multiplication(2,2) == 4.0
+
+    assert multiplication(2.5,2) == 5.0
+    assert multiplication(5,2) == 10.0
     print("all test cases passed")
 
 testcases()
